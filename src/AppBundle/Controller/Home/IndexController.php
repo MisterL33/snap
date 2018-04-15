@@ -23,7 +23,6 @@ class IndexController extends Controller
             $location = $request->request->get('locations');
             $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
 
-            var_dump($this->validatePseudo($pseudo));
             if ($this->validatePseudo($pseudo) == false)
             {
                 $user = new User();
@@ -34,7 +33,7 @@ class IndexController extends Controller
                 $em->persist($user);
                 $success = 'Tu est maintenant dans la liste';
                 $em->flush();
-                var_dump($user);
+         
             }
             else
             {
