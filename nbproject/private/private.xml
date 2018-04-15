@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp64/www/snapchat/src/AppBundle/Entity/User.php</file>
+            <file>file:/C:/wamp64/www/snapchat/app/Resources/views/Liste/liste.html.twig</file>
+            <file>file:/C:/wamp64/www/snapchat/src/AppBundle/Entity/Liste.php</file>
+            <file>file:/C:/wamp64/www/snapchat/web/assets/css/home.css</file>
+            <file>file:/C:/wamp64/www/snapchat/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/wamp64/www/snapchat/app/Resources/views/Home/index.html.twig</file>
+            <file>file:/C:/wamp64/www/snapchat/src/AppBundle/Controller/Liste/ListeController.php</file>
+            <file>file:/C:/wamp64/www/snapchat/src/AppBundle/routing.yml</file>
+            <file>file:/C:/wamp64/www/snapchat/src/AppBundle/Controller/Home/IndexController.php</file>
+        </group>
+    </open-files>
+</project-private>

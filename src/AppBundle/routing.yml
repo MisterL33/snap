@@ -1,0 +1,11 @@
+home:
+    path: /
+    defaults: { _controller: AppBundle:Home/Index:index }
+
+liste:
+    path:     /liste
+    defaults: { _controller: AppBundle:Liste/Liste:index }
+
+listeHot:
+    path:     /liste/hot
+    defaults: { _controller: AppBundle:Liste/Liste:hotListe }
