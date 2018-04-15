@@ -37,10 +37,10 @@ class IndexController extends Controller
         }
 
 
-        
+
         if (isset($location) && isset($pseudo) && isset($type))
         {
-            var_dump('ter la ');
+       
             
             $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
 
@@ -54,13 +54,12 @@ class IndexController extends Controller
                 $em->persist($user);
                 $success = 'Tu est maintenant dans la liste';
                 $em->flush();
-                var_dump($success);
-         
+    
             }
             else
             {
                 $failed = 'Tu est déjà dans la liste';
-                var_dump($failed);
+          
             }
         }
 
