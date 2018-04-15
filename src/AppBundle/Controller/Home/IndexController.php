@@ -15,12 +15,33 @@ class IndexController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $success = null;
         $failed = null;
-        $pseudo = $request->request->get('pseudo');
-        $type = $request->request->get('type');
-        if ($request->request->get('locations') && $pseudo && $type)
-        {
+        $type = null;
+        $location = null;
+        
+        if($request->request->get('pseudo') !== null){
+            $pseudo = $request->request->get('pseudo');
+        }else{
+            $pseudo = 'TropicalGuy33';
+        }
 
+        if($request->request->get('type') !== null){
+            $type = $request->request->get('type');
+        }else{
+            $type = 1;
+        }
+
+        if($request->request->get('locations') !== null){
             $location = $request->request->get('locations');
+        }else{
+            $location = 95;
+        }
+
+
+        
+        if (isset($location) && isset($pseudo) && isset($type))
+        {
+            var_dump('ter la ');
+            
             $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
 
             if ($this->validatePseudo($pseudo) == false)
@@ -33,11 +54,13 @@ class IndexController extends Controller
                 $em->persist($user);
                 $success = 'Tu est maintenant dans la liste';
                 $em->flush();
+                var_dump($success);
          
             }
             else
             {
                 $failed = 'Tu est déjà dans la liste';
+                var_dump($failed);
             }
         }
 
