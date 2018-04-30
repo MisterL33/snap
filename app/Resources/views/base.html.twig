@@ -33,6 +33,8 @@
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/liste.css') }}"/>
+
+
         </head>
 
         <body>
@@ -49,6 +51,11 @@
 
                         </div>
                         <img id='logo' src="{{ asset('assets/images/logosnap.png') }}" />
+                        <div id="newsContent">
+                            <p>Nouveautées : </p>
+                            <p> Recherche par département</p>
+                        </div>
+
                     </header>
 
                     <!-- Nav -->
@@ -58,10 +65,10 @@
                                 <a href="{{ path('home')}}">Accueil</a>
                             </li>
                             <li>
-                                <a href="{{ path('liste')}}">Liste de pseudo</a>
+                                <a href="{{ path('liste', { 'type': 'normal' }) }}">Liste de pseudo</a>
                             </li>
                             <li>
-                                <a href="{{ path('listeHot')}}">Liste de pseudo HOT</a>
+                                <a href="{{ path('listeHot', { 'type': 'hot' }) }}">Liste de pseudo HOT</a>
                             </li>
 
                         </ul>

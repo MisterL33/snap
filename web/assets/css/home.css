@@ -1,7 +1,19 @@
 #logo{
     width: 15%
 }
+#newsContent {
+    width: 25%;
+    background-color: white;
+    height: 150px;
+    border-radius: 25px;
+    margin-top: -15%;
 
+}
+
+#newsContent p {
+    color: black;
+    margin-bottom: 15px;
+}
 #header{
     padding: 25px !important;
 }
@@ -25,3 +37,4 @@
     border-radius: 4px;
     box-sizing: border-box;
 }
+

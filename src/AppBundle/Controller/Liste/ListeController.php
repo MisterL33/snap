@@ -9,51 +9,44 @@ use Symfony\Component\HttpFoundation\Request;
 class ListeController extends Controller
 {
 
-    public function indexAction(Request $request)
+    public function indexAction(Request $request, $type)
     {
 
         $em = $this->getDoctrine()->getEntityManager();
 
         $locations = $em->getRepository('AppBundle:Location')->findAll();
         $allUsers = $em->getRepository('AppBundle:User')->findAll();
+        $locationSelected = 1;
+
+
        
         if($request->request->get('location')){
+
             $location = $request->request->get('location');
             $searchUsers = $em->getRepository('AppBundle:User')->findBy(array('location' => $location));
             $allUsers = $searchUsers;
+            $locationSelected = $location;
+
         }
 
-        
-        // replace this example code with whatever you need
-        return $this->render('Liste/liste.html.twig', array(
-                    'locations' => $locations,
-                    'users' => $allUsers,
-                    'hot' => 'false',
-        ));
-    }
-
-    public function hotListeAction(Request $request)
-    {
-
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $locations = $em->getRepository('AppBundle:Location')->findAll();
-        $allUsers = $em->getRepository('AppBundle:User')->findAll();
-       
-        if($request->request->get('location')){
-            $location = $request->request->get('location');
-            $searchUsers = $em->getRepository('AppBundle:User')->findBy(array('location' => $location));
-            $allUsers = $searchUsers;
+        if($type == 'hot'){
+            return $this->render('Liste/liste.html.twig', array(
+                'locations' => $locations,
+                'users' => $allUsers,
+                'hot' => 'true',
+                'locationSelected' => $locationSelected
+            ));
+        }else{
+            return $this->render('Liste/liste.html.twig', array(
+                'locations' => $locations,
+                'users' => $allUsers,
+                'hot' => 'false',
+                'locationSelected' => $locationSelected
+            ));
         }
 
-
-        // replace this example code with whatever you need
-        return $this->render('Liste/liste.html.twig', array(
-                    'locations' => $locations,
-                    'users' => $allUsers,
-                    'hot' => 'true',
-        ));
     }
+
 
 
 }
