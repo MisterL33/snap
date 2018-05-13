@@ -6,7 +6,13 @@
         <section id="cta" style="padding-top: 20px !important; padding-bottom: 20px;" class="main special">
             <header class="major">
                 <form method="POST" action="{{ path('liste', { 'type': 'hot' }) }}">
-                <h2>Pseudo par région</h2>
+                        {% if hot is defined and hot == 'false'%}
+                        <h1>Pseudo snapchat</h1>
+
+                        {% else %}
+                        <h1>Pseudo snapchat coquin</h1>
+                        {% endif %}
+                    <h2>Choisissez une région ci-dessous, ou bien regardez toute la liste</h2>
                 <select name='location' id='locationSelect'>
                     {% for location in locations %}
 

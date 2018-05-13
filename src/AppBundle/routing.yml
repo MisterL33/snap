@@ -2,6 +2,11 @@ home:
     path: /
     defaults: { _controller: AppBundle:Home/Index:index }
 
+
+register:
+    path: /register
+    defaults: { _controller: AppBundle:Register/Register:index }
+
 liste:
     path:     /liste/{type}
     defaults: { _controller: AppBundle:Liste/Liste:index }

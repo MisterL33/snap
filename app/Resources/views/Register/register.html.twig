@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %} {% block body %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<!-- Main -->
+<div id="main">
+    {% if failed is defined %} {{failed}} {% endif %}
+    <!-- Get Started -->
+    <section id="cta" class="main special">
+        <form action="{{ path('home') }}" method="post">
+            <header class="major">
+                <h2>Rejoins la liste des snappers, met ton pseudo</h2>
+
+                <input name='pseudo' id='pseudo' placeholder="Ton pseudo snap" />
+
+
+                <h2 id='titleType'>Quel type de snapper es-tu ?</h2>
+
+                <select name='type' id='type'>
+                    <option value='0'> Normal </option>
+                    <option selected='true' value='1'> HOT </option>
+                </select>
+
+
+
+                <h2 id='locationType'>Ta région ?</h2>
+                <select name='locations' id='locationSelect'>
+                    {% for location in locations %}
+                    <option selected='true' value={{location.id}}>{{location.nom}}</option>
+
+                    {% endfor %}
+
+                </select>
+
+            </header>
+            <footer class="major">
+                <ul class="actions">
+                    <li>
+                        <input class="button special" type="submit" value="Valider" />
+                    </li>
+
+                </ul>
+            </footer>
+        </form>
+    </section>
+
+</div>
+<script>
+
+    $(document).ready(function () {
+        console.log('ok');
+
+    });
+</script> {% endblock %}
