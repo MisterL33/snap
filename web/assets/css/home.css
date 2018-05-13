@@ -1,6 +1,21 @@
 #logo{
-    width: 15%
+    width: 45%;
 }
+
+.headerMiniaturize{
+    max-height: 150px;
+   
+}
+
+
+#flexMenu{
+    list-style-type:none;
+    display: inline-flex;
+    position: relative;
+    top: -25px;
+}
+
+
 #newsContent {
     width: 25%;
     background-color: white;
@@ -15,7 +30,8 @@
     margin-bottom: 15px;
 }
 #header{
-    padding: 25px !important;
+    padding: 0px !important;
+    max-height: 180px;
 }
 
 #titleType{
