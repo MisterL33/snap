@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %} {% block body %}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<!-- Main -->
+<div id="main">
+
+    <!-- Get Started -->
+    <section id="cta" class="main special">
+        <h1>Vous cherchez un pseudo snapchat coquin (hot) ?</h1>
+        <p>SnapHot est un site regroupant les
+            <strong>pseudos snapchat hot</strong> (ou pas) en les classant par département</p>
+
+        <p>Vous pouvez vous <a style="color:cadetblue;" href="{{path('register')}}">inscrire</a> en choisissant quel type de snap vous faites :
+            <strong>snapchat coquin</strong>(hot) ? ou
+            <strong>snapchat normal</strong>
+        </p>
+        <p>Ce choix définira dans quel liste votre
+            <strong> pseudo snapchat </strong> sera placé, libre a vous ensuite d'ajoutez les autres snappeur dans la liste qui vous
+            intéresse.
+        </p>
+
+        <p>Si vous reperez un
+            <strong>pseudo snapchat</strong> qui n'a pas sa place ici(fauteur de trouble, personne malsaine ect ...) veuillez m'en
+            informer a cette addresse : snaphot33@gmail.com et il sera banni du site après vérification.</p>
+
+        <p>Ce site en est encore à ses débuts alors si vous voulez participez à son lancement et pouvoir ainsi envoyer ou recevoir
+            encore plus de
+            <strong>snap coquin</strong>, n'hésitez pas à le partager :).
+        </p>
+
+    </section>
+
+
+    {% endblock %}
+
+<script>
+    var websocket = WS.connect("ws://127.0.0.1:8080");
+    
+webSocket.on("socket/connect", function(session){
+    //session is an Autobahn JS WAMP session.
+
+    console.log("Successfully Connected!");
+})
+
+webSocket.on("socket/disconnect", function(error){
+    //error provides us with some insight into the disconnection: error.reason and error.code
+
+    console.log("Disconnected for " + error.reason + " with code " + error.code);
+})
+</script>

@@ -1,0 +1,56 @@
+#logo{
+    width: 45%;
+}
+
+.headerMiniaturize{
+    max-height: 150px;
+   
+}
+
+
+#flexMenu{
+    list-style-type:none;
+    display: inline-flex;
+    position: relative;
+
+}
+
+
+#newsContent {
+    width: 25%;
+    background-color: white;
+    height: 150px;
+    border-radius: 25px;
+    margin-top: -15%;
+
+}
+
+#newsContent p {
+    color: black;
+    margin-bottom: 15px;
+}
+#header{
+    padding: 0px !important;
+    max-height: 180px;
+}
+
+#titleType{
+    margin-top: 60px;
+}
+
+#locationType{
+
+    margin-top: 60px !important;
+
+}
+
+#pseudo {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
