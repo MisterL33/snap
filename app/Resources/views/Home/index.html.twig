@@ -1,186 +1,40 @@
 {% extends 'base.html.twig' %} {% block body %}
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
- <script src="{{ asset('assets/js/chat.js') }}"></script>
-<!-- Main -->
-<div id="main">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 
-    <!-- Get Started -->
-    <section id="cta" class="main special">
-        <h1>Vous cherchez un pseudo snapchat coquin (hot) ?</h1>
-        <p>SnapHot est un site regroupant les
-            <strong>pseudos snapchat hot</strong> (ou pas) en les classant par département</p>
+    <!-- Main -->
+    <div id="main">
 
-        <p>Vous pouvez vous <a style="color:cadetblue;" href="{{path('register')}}">inscrire</a> en choisissant quel type de snap vous faites :
-            <strong>snapchat coquin</strong>(hot) ? ou
-            <strong>snapchat normal</strong>
-        </p>
-        <p>Ce choix définira dans quel liste votre
-            <strong> pseudo snapchat </strong> sera placé, libre a vous ensuite d'ajoutez les autres snappeur dans la liste qui vous
-            intéresse.
-        </p>
+        <!-- Get Started -->
+        <section id="cta" class="main special">
+            <h1>Vous cherchez un pseudo snapchat coquin (hot) ?</h1>
+            <p>SnapHot est un site regroupant les
+                <strong>pseudos snapchat hot</strong> (ou pas) en les classant par département</p>
 
-        <p>Si vous reperez un
-            <strong>pseudo snapchat</strong> qui n'a pas sa place ici(fauteur de trouble, personne malsaine ect ...) veuillez m'en
-            informer a cette addresse : snaphot33@gmail.com et il sera banni du site après vérification.</p>
+            <p>Vous pouvez vous <a style="color:cadetblue;" href="{{ path('register') }}">inscrire</a> en choisissant
+                quel type de snap vous faites :
+                <strong>snapchat coquin</strong>(hot) ? ou
+                <strong>snapchat normal</strong>
+            </p>
+            <p>Ce choix définira dans quel liste votre
+                <strong> pseudo snapchat </strong> sera placé, libre a vous ensuite d'ajoutez les autres snappeur dans
+                la liste qui vous
+                intéresse.
+            </p>
 
-        <p>Ce site en est encore à ses débuts alors si vous voulez participez à son lancement et pouvoir ainsi envoyer ou recevoir
-            encore plus de
-            <strong>snap coquin</strong>, n'hésitez pas à le partager :).
-        </p>
+            <p>Si vous reperez un
+                <strong>pseudo snapchat</strong> qui n'a pas sa place ici(fauteur de trouble, personne malsaine ect ...)
+                veuillez m'en
+                informer a cette addresse : snaphot33@gmail.com et il sera banni du site après vérification.</p>
 
-    </section>
-    
-    <script type="text/javascript">
-    var instanse = false;
-var state;
-var mes;
-var file;
-var url = '{{ path('chat') }}';
+            <p>Ce site en est encore à ses débuts alors si vous voulez participez à son lancement et pouvoir ainsi
+                envoyer ou recevoir
+                encore plus de
+                <strong>snap coquin</strong>, n'hésitez pas à le partager :).
+            </p>
 
-function Chat () {
-    this.update = updateChat;
-    this.send = sendChat;
-	this.getState = getStateOfChat;
-}
+        </section>
 
-//gets the state of the chat
-function getStateOfChat(){
 
-	if(!instanse){
-		 instanse = true;
-		 $.ajax({
-			   type: "POST",
-			   url: url,
-			   data: {  
-			   			'function': 'getState',
-						'file': file
-						},
-			   dataType: "json",
-			
-			   success: function(data){
-				   //console.log(data);
-				   state = data.state;
-				   instanse = false;
-			   },
-			});
-	}	 
-}
 
-//Updates the chat
-function updateChat(){
-	 if(!instanse){
-		 instanse = true;
-	     $.ajax({
-			   type: "POST",
-			   url: url,
-			   data: {  
-			   			'function': 'update',
-						'state': state,
-						'file': file
-						},
-			   dataType: "json",
-			   success: function(data){
-                   console.log(data);
-				   if(data.text){
-						for (var i = 0; i < data.text.length; i++) {
-                            $('#chat-area').append($("<p>"+ data.text[i] +"</p>"));
-                        }								  
-				   }
-				   document.getElementById('chat-area').scrollTop = document.getElementById('chat-area').scrollHeight;
-				   instanse = false;
-				   state = data.state;
-			   },
-			});
-	 }
-	 else {
-		 setTimeout(updateChat, 1500);
-	 }
-}
 
-//send the message
-function sendChat(message, nickname)
-{       
-    updateChat();
-     $.ajax({
-		   type: "POST",
-		   url: url,
-		   data: {  
-		   			'function': 'send',
-					'message': message,
-					'nickname': nickname,
-					'file': file
-				 },
-		   dataType: "json",
-		   success: function(data){
-               console.log(message);
-			   updateChat();
-		   },
-		});
-}
-
-        // ask user for name with popup prompt    
-        var name = prompt("Enter your chat name:", "Guest");
-        
-        // default name is 'Guest'
-    	if (!name || name === ' ') {
-    	   name = "Guest";	
-    	}
-    	
-    	// strip tags
-    	name = name.replace(/(<([^>]+)>)/ig,"");
-    	
-    	// display name on page
-    	$("#name-area").html("You are: <span>" + name + "</span>");
-    	
-    	// kick off chat
-        var chat =  new Chat();
-    	$(function() {
-    	
-    		 chat.getState(); 
-    		 
-    		 // watch textarea for key presses
-             $("#sendie").keydown(function(event) {  
-             
-                 var key = event.which;  
-           
-                 //all keys including return.  
-                 if (key >= 33) {
-                   
-                     var maxLength = $(this).attr("maxlength");  
-                     var length = this.value.length;  
-                     
-                     // don't allow new content if length is maxed out
-                     if (length >= maxLength) {  
-                         event.preventDefault();  
-                     }  
-                  }  
-    		 																																																});
-    		 // watch textarea for release of key press
-    		 $('#sendie').keyup(function(e) {	
-    		 					 
-    			  if (e.keyCode == 13) { 
-    			  
-                    var text = $(this).val();
-    				var maxLength = $(this).attr("maxlength");  
-                    var length = text.length; 
-                     
-                    // send 
-                    if (length <= maxLength + 1) { 
-                     
-    			        chat.send(text, name);	
-    			        $(this).val("");
-    			        
-                    } else {
-                    
-    					$(this).val(text.substring(0, maxLength));
-    					
-    				}	
-    				
-    				
-    			  }
-             });
-            
-    	});
-    </script>
-
-    {% endblock %}
+{% endblock %}
