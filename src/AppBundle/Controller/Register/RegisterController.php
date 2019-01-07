@@ -56,11 +56,7 @@ class RegisterController extends Controller
                 $em->flush();
     
             }
-            else
-            {
-                $failed = 'Tu est déjà dans la liste';
-          
-            }
+
         }
 
 
@@ -68,7 +64,7 @@ class RegisterController extends Controller
         //      var_dump($selectedLocation);
         //$user->setLocation($location);
         // replace this example code with whatever you need
-        return $this->render('Register/register.html.twig', array(
+        return $this->render('@App/Register/register.html.twig', array(
                     'locations' => $allLocation,
                     'success' => $success,
                     'failed' => $failed

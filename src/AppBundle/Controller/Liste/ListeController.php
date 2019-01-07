@@ -30,14 +30,14 @@ class ListeController extends Controller
         }
 
         if($type == 'hot'){
-            return $this->render('Liste/liste.html.twig', array(
+            return $this->render('@App/Liste/liste.html.twig', array(
                 'locations' => $locations,
                 'users' => $allUsers,
                 'hot' => 'true',
                 'locationSelected' => $locationSelected
             ));
         }else{
-            return $this->render('Liste/liste.html.twig', array(
+            return $this->render('@App/Liste/liste.html.twig', array(
                 'locations' => $locations,
                 'users' => $allUsers,
                 'hot' => 'false',
