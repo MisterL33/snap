@@ -18,22 +18,25 @@ class ListeController extends Controller
         $allUsers = $em->getRepository('AppBundle:User')->findAll();
         $locationSelected = 1;
 
-
-       
         if($request->request->get('location')){
-
             $location = $request->request->get('location');
             $searchUsers = $em->getRepository('AppBundle:User')->findBy(array('location' => $location));
             $allUsers = $searchUsers;
             $locationSelected = $location;
-
         }
 
-        if($type == 'hot'){
-            return $this->render('@App/Liste/liste.html.twig', array(
+        if($type == '1'){
+            return $this->render('@App/Liste/listeHot.html.twig', array(
                 'locations' => $locations,
                 'users' => $allUsers,
                 'hot' => 'true',
+                'locationSelected' => $locationSelected
+            ));
+        }elseif($type == '2'){
+            return $this->render('@App/Liste/listeHotV2.html.twig', array(
+                'locations' => $locations,
+                'users' => $allUsers,
+                'hotV2' => 'true',
                 'locationSelected' => $locationSelected
             ));
         }else{
@@ -42,11 +45,7 @@ class ListeController extends Controller
                 'users' => $allUsers,
                 'hot' => 'false',
                 'locationSelected' => $locationSelected
-            ));
+            )); 
         }
-
     }
-
-
-
 }

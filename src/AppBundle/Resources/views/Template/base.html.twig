@@ -20,7 +20,7 @@
                     enable_page_level_ads: true
                 });
             </script>
-            <title>SnapHot, liste des pseudo snapchat hot de votre région </title>
+            {#<title>SnapHot, liste des pseudo snapchat hot de votre région </title> #}
             <meta name="description" content="Sur SnapHot trouver des snapchat coquins(ou normaux) classé par régions, rejoignez la communauté !" />
             <meta name="keywords" content="snap hot sexy chaud snapchat rencontre" />
             <meta name="robots" content="all" />
@@ -35,11 +35,15 @@
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}"/>
             <link rel="stylesheet" href="{{ asset('assets/css/liste.css') }}"/>
-
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            <script src="{{ asset('assets/js/main.js') }}"></script>
+{#
             <a id="snapgif" href="http://chaturbate.com/in/?track=default&tour=ZmU7&campaign=cniCC">
                 <img  alt="snapchat gif" src="{{ asset('assets/images/snapGif.gif') }}" />
             </a>
-
+#}
         </head>
 
         <body>
@@ -53,10 +57,12 @@
                             <li style="width:30%;">
                                     <img alt="snapchat" id='logo' src="{{ asset('assets/images/logosnap.png') }}" /> 
                             </li>
-                            <li>
+                            {#<li>
                                     <h1>SnapHot Or Not ?</h1> 
                                 <p>Trouvez les utilisateurs snap de votre région<br/>
-                            </li>
+                            </li>#}
+                            
+                            
                         </ul>
                         </div>
                     </header>
@@ -70,12 +76,15 @@
                                 <a href="{{ path('register') }}">Inscription</a>
                             </li>
                             <li>
-                                <a href="{{ path('liste', { 'type': 'normal' }) }}">Liste de pseudo</a>
+                                <a href="{{ path('liste', { 'type': '0' }) }}">Liste de pseudo</a>
                             </li>
+                           {# <li>
+                                <a href="{{ path('listeHot', { 'type': '1' }) }}">Liste de pseudo HOT</a>
+                            </li>
+#}
                             <li>
-                                <a href="{{ path('listeHot', { 'type': 'hot' }) }}">Liste de pseudo HOT</a>
+                                <a href="{{ path('listeHotV2', { 'type': '2' }) }}">V2</a>
                             </li>
-
                         </ul>
                     </div>
                 {% endblock %}
@@ -84,16 +93,11 @@
 
 
                 <!-- Scripts -->
-                <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-                <script src="{{ asset('assets/js/jquery.scrollex.min.js') }}"></script>
-                <script src="{{ asset('assets/js/jquery.scrolly.min.js') }}"></script>
-                <script src="{{ asset('assets/js/skel.min.js') }}"></script>
-                <script src="{{ asset('assets/js/util.js') }}"></script>
+
                 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-                <script src="{{ asset('assets/js/main.js') }}"></script>
-                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+                
+                
+                
             {% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

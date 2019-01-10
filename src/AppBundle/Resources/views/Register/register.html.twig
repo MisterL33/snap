@@ -11,7 +11,7 @@
         <a id="snapgifMobile" href="http://chaturbate.com/in/?track=default&tour=ZmU7&campaign=cniCC">
             <img  alt="snapchat gif" src="{{ asset('assets/images/snapGif.gif') }}" />
         </a>
-        <form action="{{ path('register') }}" method="post">
+        <form action="{{ path('register') }}" id='registerForm' method="post">
             <header class="major">
                 <h2>Rejoins la liste des snappers, met ton pseudo</h2>
 
@@ -22,10 +22,27 @@
 
                 <select name='type' id='type'>
                     <option value='0'> Normal </option>
-                    <option selected='true' value='1'> HOT </option>
+                    <option  value='1'> HOT </option>
+                    <option selected='true' value='2'> HOT 2.0 </option>
                 </select>
 
+                <div id='genderContainer'>
+                    <h2 id='genderType'>Genre</h2>
+                    <select name='gender' id='genderSelect'>
+                        <option selected='true' value='homme'>Homme</option>
+                        <option  value='false'>Femme</option>
+                    </select>
+                </div>
 
+                <div id='ageContainer'>
+                    <h2 id='age'>Age</h2>
+                    <input type='text' id='ageText' name='age' />
+                </div>
+
+                <div id='bioContainer'>
+                    <h2 id='bio'>Description</h2>
+                    <textarea id='bioText' placeholder='Décris toi / Ce que tu recherche' name='bioText'></textarea>
+                </div>
 
                 <h2 id='locationType'>Ta région ?</h2>
                 <select name='locations' id='locationSelect'>
@@ -33,14 +50,13 @@
                     <option selected='true' value={{location.id}}>{{location.nom}}</option>
 
                     {% endfor %}
-
                 </select>
 
             </header>
             <footer class="major">
                 <ul class="actions">
                     <li>
-                        <input class="button special" type="submit" value="Valider" />
+                        <input id='registerButton' class="button special" type="submit" value="Valider" />
                     </li>
 
                 </ul>

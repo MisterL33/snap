@@ -14,3 +14,7 @@ liste:
 listeHot:
     path:     /liste/{type}
     defaults: { _controller: AppBundle:Liste/Liste:index }
+
+listeHotV2:
+    path:     /liste/{type}
+    defaults: { _controller: AppBundle:Liste/Liste:index }

@@ -8,20 +8,12 @@
             </a>
             <header class="major">
                 <form method="POST" action="{{ path('liste', { 'type': 'hot' }) }}">
-                        {% if hot is defined and hot == 'false'%}
-                        <h1>Pseudos snapchat</h1>
-                        {% elseif hotV2 is defined and hotV2 == 'true' %}
-                        <h1> Pseudos snapchat V2</h1>
-                        {% else %}
-                        <h1>Pseudos snapchat coquin</h1>
-                        {% endif %}
+                    <h1>Pseudos snapchat coquin</h1>
                     <h2>Choisissez une région ci-dessous, ou bien regardez toute la liste</h2>
                 <select name='location' id='locationSelect'>
                     {% for location in locations %}
-
                         <option {% if locationSelected == location.id %} selected="selected" {% endif %} value={{location.id}}>{{location.nom}}</option>
                     {% endfor %}
-
                 </select>
             </header>
             <footer class="major">
@@ -29,31 +21,31 @@
                     <li>
                         <input type="submit" value="Rechercher" />
                     </li>
-
                 </ul>
             </form>
             </footer>
         </section>
+
         <section id="cta"  style="padding-top: 20px !important;" class="main special">
             <header class="major">
-                <h2>Tous les pseudos</h2>
+                <h2> Tous les pseudos hot </h2>
             </header>
-            <footer class="major">
-                <ul class="actions">
-                    {% for user in users %}
-                        {%if user.hot == 0%}
-                            <li class="inliner" >
-                                <div class="card">
-                                    <img id="logoListe" src={{ asset('assets/images/logosnap.png')}}  alt="Avatar" >
-                                    <div class="container">
-                                        <h4><b>{{user.login}}</b></h4>
+                <footer class="major">
+                    <ul class="actions">
+                        {% for user in users %}
+                            {% if user.hot == 1 %}
+                                <li class="inliner" >
+                                    <div class="card">
+                                        <img id="logoListe" src={{ asset('assets/images/logosnap.png')}}  alt="Avatar" >
+                                        <div class="container">
+                                            <h4><b>{{user.login}}</b></h4>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        {%endif%}
-                    {% endfor %}
-                </ul>
-            </footer>
-    </section>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </footer>
+        </section>
     </div>
 {% endblock body %}

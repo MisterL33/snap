@@ -23,6 +23,29 @@ class User
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="age", type="integer", length=255)
+     */
+    private $age;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre", type="string", length=255)
+     */
+    private $genre;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255)
+     */
+    private $description;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, unique=true)
@@ -62,6 +85,8 @@ class User
     {
         return $this->id;
     }
+
+    
 
     /**
      * Set login
@@ -135,4 +160,28 @@ class User
         return $this->location;
     }
 
+
+    /**
+     * Set hot
+     *
+     * @param boolean $hot
+     *
+     * @return User
+     */
+    public function setHot($hot)
+    {
+        $this->hot = $hot;
+
+        return $this;
+    }
+
+    /**
+     * Get hot
+     *
+     * @return boolean
+     */
+    public function getHot()
+    {
+        return $this->hot;
+    }
 }
