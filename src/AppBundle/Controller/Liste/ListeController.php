@@ -25,7 +25,7 @@ class ListeController extends Controller
             $locationSelected = $location;
         }
 
-        if($type == '1'){
+        if($type == '1' | $type == 'hot'){
             return $this->render('@App/Liste/listeHot.html.twig', array(
                 'locations' => $locations,
                 'users' => $allUsers,
