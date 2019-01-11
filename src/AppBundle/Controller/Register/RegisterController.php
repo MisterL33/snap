@@ -53,9 +53,9 @@ class RegisterController extends Controller
             if ( isset($location) && isset($pseudo) && isset($type) && isset($age) && isset($bio) && isset($gender))
             {
                 $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
-    
-                if ($this->validatePseudo($pseudo) == false)
+                if ($this->validatePseudo($pseudo, $type) == false)
                 {
+                    
                     $user = new User();
                     $user->setLogin($pseudo);
                     $user->setLocation($selectedLocation);
@@ -99,19 +99,22 @@ class RegisterController extends Controller
         ));
     }
 
-    public function validatePseudo($pseudo)
+    public function validatePseudo($pseudo,$type) // si l'user existe mais qu'il veux s'inscrire dans un liste différente
     {
-
+        
         $em = $this->getDoctrine()->getEntityManager();
         $exist = false;
-        $user = $em->getRepository('AppBundle:User')->findBy(array('login' => $pseudo));
-
-        if ($user)
+        $user = $em->getRepository('AppBundle:User')->findOneBy(array('login' => $pseudo));
+        dump($type);
+        
+        if ($user && $type == $user->getHot())
         {
+            die(dump($user));
             $exist = true;
             return true;
         }
-
+        
+        
         return false;
     }
 
