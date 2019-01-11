@@ -8,9 +8,9 @@
     {% if failed is defined %} {{failed}} {% endif %}
     <!-- Get Started -->
     <section id="cta" class="main special">
-        <a id="snapgifMobile" href="http://chaturbate.com/in/?track=default&tour=ZmU7&campaign=cniCC">
+       {#} <a id="snapgifMobile" href="http://chaturbate.com/in/?track=default&tour=ZmU7&campaign=cniCC">
             <img  alt="snapchat gif" src="{{ asset('assets/images/snapGif.gif') }}" />
-        </a>
+        </a>#}
         <form action="{{ path('register') }}" id='registerForm' method="post">
             <header class="major">
                 <h2>Rejoins la liste des snappers, met ton pseudo</h2>
@@ -64,11 +64,4 @@
         </form>
     </section>
 
-</div>
-<script>
-
-    $(document).ready(function () {
-        console.log('ok');
-
-    });
-</script> {% endblock %}
+</div> {% endblock %}
