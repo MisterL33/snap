@@ -105,11 +105,9 @@ class RegisterController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $exist = false;
         $user = $em->getRepository('AppBundle:User')->findOneBy(array('login' => $pseudo));
-        dump($type);
         
         if ($user && $type == $user->getHot())
         {
-            die(dump($user));
             $exist = true;
             return true;
         }
