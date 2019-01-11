@@ -46,7 +46,7 @@ class RegisterController extends Controller
         if($request->request->get('locations') !== null){
             $location = $request->request->get('locations');
         }else{
-            $location = 95;
+            $location = 96;
         }
 
         if($type == 2){
