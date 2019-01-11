@@ -5,6 +5,40 @@
 
 }
 
+.pseudo {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.upgraded{
+    height: 300px;
+    max-height: 300px;
+    background-image: url(images/overlay.png), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+    
+}
+
+.upgraded h3 {
+    color: white !important;
+}
+
+.upgraded h4 {
+    color: white !important;
+}
+
+#header{
+    display: contents;
+
+}
+
+#headerGender{
+    height: 36px;
+}
+
+#headerGender img{
+    float: right;
+    height: 36px;
+}
+
 /* On mouse-over, add a deeper shadow */
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -18,12 +52,25 @@
 #logoListe{
     width: 60%;
     padding-top: 20px;
-    }
-
-.inliner{
-    width: 20%;
-    padding: 25px;
+    height: 20%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
+#logoListe2{
+    width: 30%;
+    padding-top: 20px;
+    height: 20%;
+    margin-right: auto;
+    margin-left: auto;
+}
 
+.inliner{
+    padding: 25px !important;
+    width: 28%;
+}
+
+.inliner2{
+    padding: 25px !important;
+}
 

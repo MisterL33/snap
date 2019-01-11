@@ -25,7 +25,7 @@ class User
     /**
      * @var int
      *
-     * @ORM\Column(name="age", type="integer", length=255)
+     * @ORM\Column(name="age", nullable=true, type="integer", length=255)
      */
     private $age;
 
@@ -33,7 +33,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="genre", type="string", length=255)
+     * @ORM\Column(name="genre", nullable=true, type="string", length=255)
      */
     private $genre;
 
@@ -41,7 +41,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", nullable=true, type="string", length=255)
      */
     private $description;
 
