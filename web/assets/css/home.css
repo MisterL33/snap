@@ -39,9 +39,14 @@
 }
 
 #locationType{
+    margin-top: 40px !important;
+}
 
-    margin-top: 60px !important;
-
+#genderType{
+    margin-top: 40px !important;
+}
+#bio{
+    margin-top: 40px !important;
 }
 
 #pseudo {

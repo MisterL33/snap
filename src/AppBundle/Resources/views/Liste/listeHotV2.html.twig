@@ -1,0 +1,64 @@
+{% extends '@App/Template/base.html.twig' %}
+
+{% block body %}
+    <div id="main">
+        <section id="cta" style="padding-top: 20px !important; padding-bottom: 20px;" class="main special">
+            <a id="snapgifMobile" href="http://chaturbate.com/in/?track=default&tour=ZmU7&campaign=cniCC">
+                <img  alt="snapchat gif" src="{{ asset('assets/images/snapGif.gif') }}" />
+            </a>
+            
+            <header class="major">
+                <form method="POST" action="{{ path('liste', { 'type': 'hot' }) }}">
+                    <h1>Pseudos snapchat coquin</h1>
+                    <h2>Choisissez une région ci-dessous, ou bien regardez toute la liste</h2>
+                <select name='location' id='locationSelect'>
+                    {% for location in locations %}
+                        <option {% if locationSelected == location.id %} selected="selected" {% endif %} value={{location.id}}>{{location.nom}}</option>
+                    {% endfor %}
+                </select>
+            </header>
+            
+            <footer class="major">
+                <ul class="actions">
+                    <li>
+                        <input type="submit" value="Rechercher" />
+                    </li>
+                </ul>
+            </form>
+            </footer>
+        </section>
+        
+        <section id="cta"  style="padding: 0;" class="main v2 special">
+            <header class="major">
+                    <h2 style="margin-top: 5%"> Tous les pseudos V2 </h2>
+            </header>
+            <footer class="major">
+                <ul class="actions" class="col-lg-12 col-md-12">
+                    {% for user in users %}
+                        {% if user.hot == 2 %}
+                            <li class="inliner2 col-lg-5 col-md-5" >
+                                <div class="card upgraded">
+                                    <div class="header">
+                                        <div id="headerGender">
+                                            {% if user.genre == 'homme' %}
+                                                <img src={{ asset('assets/images/manIcon.png')}} alt="homme" /> 
+                                            {% else %} 
+                                                <img src={{ asset('assets/images/womanIcon.png')}} alt="femme" /> 
+                                            {% endif %}
+                                        </div>
+                                        <div>
+                                            <img id="logoListe2" src={{ asset('assets/images/logosnap.png')}}  alt="Avatar" > 
+                                        </div>   
+                                 </div>
+                                    <h3 class="pseudo">{{user.login}}</h3>
+                                    <h4>{{user.age}}</h4>
+                                    <h4>{{user.description}}</h4>
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </footer>
+        </section>
+    </div>
+{% endblock body %}

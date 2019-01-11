@@ -16,12 +16,13 @@ class RegisterController extends Controller
         $success = null;
         $failed = null;
         $type = null;
+        $gender = null;
+        $age = null;
+        $bio = null;
         $location = null;
         
         if($request->request->get('pseudo') !== null){
             $pseudo = $request->request->get('pseudo');
-        }else{
-            $pseudo = 'TropicalGuy33';
         }
 
         if($request->request->get('type') !== null){
@@ -30,45 +31,68 @@ class RegisterController extends Controller
             $type = 1;
         }
 
+        if($request->request->get('gender') !== null){
+            $gender = $request->request->get('gender');
+        }
+
+        if($request->request->get('age') !== null){
+            $age = $request->request->get('age');
+        }
+
+        if($request->request->get('bioText') !== null){
+            $bio = $request->request->get('bioText');
+        }
+
         if($request->request->get('locations') !== null){
             $location = $request->request->get('locations');
         }else{
             $location = 95;
         }
 
-
-
-        if (isset($location) && isset($pseudo) && isset($type))
-        {
-       
-            
-            $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
-
-            if ($this->validatePseudo($pseudo) == false)
+        if($type == 2){
+            if ( isset($location) && isset($pseudo) && isset($type) && isset($age) && isset($bio) && isset($gender))
             {
-                $user = new User();
-
-                $user->setLogin($pseudo);
-                $user->setLocation($selectedLocation);
-                $user->setHot($type);
-                $em->persist($user);
-                $success = 'Tu est maintenant dans la liste';
-                $em->flush();
+                $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
     
+                if ($this->validatePseudo($pseudo) == false)
+                {
+                    $user = new User();
+                    $user->setLogin($pseudo);
+                    $user->setLocation($selectedLocation);
+                    $user->setHot($type);
+                    $user->setGenre($gender);
+                    $user->setDescription($bio);
+                    $user->setAge($age);
+                    $em->persist($user);
+                    $success = 'Tu est maintenant dans la liste';
+                    $em->flush();
+                }
             }
-            else
+        }else{
+            if (isset($location) && isset($pseudo) && isset($type))
             {
-                $failed = 'Tu est déjà dans la liste';
-          
+                $selectedLocation = $em->getRepository('AppBundle:Location')->find($location);
+    
+                if ($this->validatePseudo($pseudo) == false)
+                {
+                    $user = new User();
+                    $user->setLogin($pseudo);
+                    $user->setLocation($selectedLocation);
+                    $user->setHot($type);
+                    $em->persist($user);
+                    $success = 'Tu est maintenant dans la liste';
+                    $em->flush();
+                }
             }
         }
+        
 
 
         $allLocation = $em->getRepository('AppBundle:Location')->findAll();
         //      var_dump($selectedLocation);
         //$user->setLocation($location);
         // replace this example code with whatever you need
-        return $this->render('Register/register.html.twig', array(
+        return $this->render('@App/Register/register.html.twig', array(
                     'locations' => $allLocation,
                     'success' => $success,
                     'failed' => $failed

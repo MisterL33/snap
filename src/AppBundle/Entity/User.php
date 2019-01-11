@@ -23,6 +23,29 @@ class User
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="age", nullable=true, type="integer", length=255)
+     */
+    private $age;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre", nullable=true, type="string", length=255)
+     */
+    private $genre;
+
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", nullable=true, type="string", length=255)
+     */
+    private $description;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, unique=true)
@@ -47,9 +70,9 @@ class User
     private $location;
 
     /**
-     * @var bool
+     * @var int
      *
-     * @ORM\Column(name="hot", type="boolean")
+     * @ORM\Column(name="hot", type="integer", length=255)
      */
     private $hot;
 
@@ -62,6 +85,8 @@ class User
     {
         return $this->id;
     }
+
+    
 
     /**
      * Set login
@@ -158,5 +183,77 @@ class User
     public function getHot()
     {
         return $this->hot;
+    }
+
+    /**
+     * Set age
+     *
+     * @param integer $age
+     *
+     * @return User
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+
+        return $this;
+    }
+
+    /**
+     * Get age
+     *
+     * @return integer
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * Set genre
+     *
+     * @param string $genre
+     *
+     * @return User
+     */
+    public function setGenre($genre)
+    {
+        $this->genre = $genre;
+
+        return $this;
+    }
+
+    /**
+     * Get genre
+     *
+     * @return string
+     */
+    public function getGenre()
+    {
+        return $this->genre;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return User
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 }
