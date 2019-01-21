@@ -19,7 +19,6 @@ function validateRegister() {
             return false;
         }
         if (isEmpty(genre)) {
-            console.log(genre);
             alert('Veuillez saisir votre genre');
             return false;
         }
@@ -48,7 +47,12 @@ function validateRegister() {
             alert('Veuillez saisir votre région');
             return false;
         }
-    }
+	}
+	
+	if(age < 18 ){
+		alert('Désolé, il faut être majeur pour s\'inscrire sur ce site');
+		return false;
+	}
 
     return true;
 }
